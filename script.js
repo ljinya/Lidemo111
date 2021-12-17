@@ -25,7 +25,6 @@ function renderBoard(numRows, numCols, grid) {
                     grid[i][j].clear = true;
                     cellEl.classList.add("clear");
                     grid[i][j].cellEl.innerText = grid[i][j].count;
-                    changecolor(grid,i,j);
                 }
 
                 checkAllClear(grid);
@@ -188,65 +187,52 @@ function checkAllClear(grid) {
     return true;
 }
 
-//游戏简单，中级，高级模式
-let btns =document.getElementsByTagName('button');
-    let grid = initialize(9,9,10);
-    renderBoard(9,9,grid);
-    
-let  easyEl = document.querySelector("#0");
-let El1 = document.createElement("td");
-El1.className = "easy";
-El1.innerText = "Easy"
-El1.addEventListener("click",()=> {
+//游戏简单，中级，高级模式  
+let count = {
+    num:0
+};
+
+let  easy= document.querySelector("#easy");
+easy.addEventListener("click",()=> {
     if (count.num === 0) {
-        easy();
+        let grid = initialize(9,9,10);
+        renderBoard(9,9,grid);
         count.num+=1;
     }else{
-        location.reload();
+        document.getElementById("board").innerHTML="";
+        let grid = initialize(9,9,10);
+        renderBoard(9,9,grid);
     }
-    titleEl.innerHTML = "Reload";
-    titleEl.classList.add("add");
 });
-easyEl.append(El1)
 
 
-function normal(){
-    let grid = initialize(16,16,40);
-    renderBoard(16,16,grid);
-    
-}
-let  normalEl = document.querySelector("#1");
-let El2 = document.createElement("td");
-El2.className = "normal";
-El2.innerText = "Normal"
-El2.addEventListener("click",()=> {
+let  normal= document.querySelector("#normal");
+normal.addEventListener("click",()=> {
     if (count.num === 0) {
-        normal();
+        let grid = initialize(16,16,40);
+        renderBoard(16,16,grid);
         count.num+=1;
     }else{
-        location.reload();
+        document.getElementById("board").innerHTML="";
+        let grid = initialize(16,16,40);
+        renderBoard(16,16,grid)
     }
-    titleEl.innerHTML = "Reload";  
-    titleEl.classList.add("add");
 });
-normalEl.append(El2)
 
-function difficult(){
-    let grid = initialize(28,28,99);
-    renderBoard(16,30,grid);   
-}
-let  difficultlEl = document.querySelector("#2");
-let El3 = document.createElement("td");
-El3.className = "difficult";
-El3.innerText = "Difficult"
-El3.addEventListener("click",()=> {
+let  difficult= document.querySelector("#difficult");
+difficult.addEventListener("click",()=> {
     if (count.num === 0) {
-        difficult();
+        let grid = initialize(18,28,99);
+        renderBoard(18,28,grid);
         count.num+=1;
     }else{
-        location.reload();
+        document.getElementById("board").innerHTML="";
+        let grid = initialize(18,28,99);
+        renderBoard(18,28,grid)
     }
-    titleEl.innerHTML = "Reload"; 
-    titleEl.classList.add("add") ;  
 });
-difficultlEl.append(El3)
+//游戏初始化
+let restart = document.querySelector("#restart")
+restart.addEventListener("click",()=>{
+    location.reload()
+});
