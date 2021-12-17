@@ -1,20 +1,14 @@
+#mine{
+    margin: 150px auto; 
+    padding:0   
+}
 
-body {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
-}                    /*四个块设置居中*/
+.level{
+    text-align: center;
+    margin-bottom: 10px;
+}           
 
-.game-pane {
-    border-style: solid;      /*solid是实线*/
-    border-width: 1px;
-    border-color: #ccc;
 
-    box-shadow: 2px 2px 2px #ccc;
-}  
 
 .level button{              /*切换模式按钮的设计*/
     padding:5px 6.5px;
@@ -30,16 +24,30 @@ body {
 }
 
 .level button.active{
-    background: #27dbff;
+    background-color: #27dbff;
 }
 
 
+.tips{
+    color: rgba(216, 16, 16, 0.541)
+}
+
+.mine{
+    background:#d9d9d9 url(地雷.png)no-repeat center;
+    background-size: cover;
+}
+
+.flag{
+    background:#ccc url(旗子.png)no-repeat center;
+    background-size: cover;
+}
 .cell {
     background-color: #ccc;
     width: 1.5em;
     height: 1.5em;
     border-style: outset;
     text-align: center;
+    font-weight: bold;
     user-select: none;
 }
 
@@ -65,3 +73,64 @@ body {
     margin-top: 10px;
     text-align: center;
 }
+
+table{
+    border-spacing: 1px;
+    background: #aaa9ad;
+    margin: 0 auto;
+}
+
+
+.cell.zero {
+    background-color: #d9d9d9;
+    border-color: #d9d9d9;
+}
+
+.cell.one {
+    background-color: #d9d9d9;
+    border-color: #d9d9d9;
+    color: #0332fe;
+}
+
+.cell.two {
+    background-color: #d9d9d9;
+    border-color: #d9d9d9;
+    color: #019f02;
+}
+
+.cell.three {
+    background-color: #d9d9d9;
+    border-color: #d9d9d9;
+    color: #ff2600;
+}
+
+.cell.four {
+    background-color: #d9d9d9;
+    border-color: #d9d9d9;
+    color: #93208f;
+}
+
+.cell.five {
+    background-color: #d9d9d9;
+    border-color: #d9d9d9;
+    color: #ff7f29;
+}
+
+.cell.six {
+    background-color: #d9d9d9;
+    border-color: #d9d9d9;
+    color: #ff3fff;
+}
+
+.cell.seven {
+    background-color: #d9d9d9;
+    border-color: #d9d9d9;
+    color: #3fffbf;
+}
+
+.cell.eight {
+    background-color: #d9d9d9;
+    border-color: #d9d9d9;
+    color: #22ee0f;
+}
+
