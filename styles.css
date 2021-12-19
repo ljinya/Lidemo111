@@ -54,13 +54,22 @@
 }
 
 .mine{
-    background:#d9d9d9 url(地雷.png)no-repeat center;
+    background:#e64343 ;
     background-size: cover;
+    margin: auto;
 }
 
-.flag{
-    background:#ccc url(旗子.png)no-repeat center;
-    background-size: cover;
+.cell.flag{
+    background-color:   rgb(145, 7, 150);
+    border-color:rgba(145,7,150,100);
+    background:url(https://cdn9.52xs.com.cn/d/article/20210519/41328.jpg)no-repeat center;
+    display: block;
+    width: 1.5em;
+    height: 1.5em;
+    border-style:outset;
+    text-align: center;
+    user-select: none;
+
 }
 .cell {
     background-color: #ccc;
@@ -91,12 +100,11 @@
 }
 
 .info {
-    margin-top: 10px;
-    text-align: center;
-    height: 40px;
-    width:300px;
-    margin: 80px auto;
-    float:left;
+    height: 0px;
+    width: 300px;
+    margin: 460px auto;
+    float: right ;
+    position: absolute;
     text-align: center;
     margin-bottom: 10px;
 }
@@ -104,7 +112,10 @@
 table{
     border-spacing: 1px;
     background: #aaa9ad;
-    margin: 0 auto;
+    margin-top:auto;
+    margin-right: 400px;
+    margin-bottom:auto;
+    margin-left:320px ;
 }
 
 

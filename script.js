@@ -1,3 +1,4 @@
+
 function renderBoard(numRows, numCols, grid) {
     let boardEl = document.querySelector("#board");  //querySelector()选择接受一个css选择符，返回与该模式匹配的第一个元素。
 
@@ -25,6 +26,7 @@ function renderBoard(numRows, numCols, grid) {
                     grid[i][j].clear = true;
                     cellEl.classList.add("clear");
                     grid[i][j].cellEl.innerText = grid[i][j].count;
+                    changecolor(grid,i,j);
                 }
 
                 checkAllClear(grid);
@@ -34,13 +36,24 @@ function renderBoard(numRows, numCols, grid) {
                 }
 
             });
+            //插旗
+            cellEl.addEventListener("mousedown",(e)=>{
+                if (e.button == 2 && grid[i][j].clear == false && grid[i][j].flag == false){
+                    grid[i][j].cellEl.classList.add("flag");
+                    grid[i][j].flag = true;
+                }else{
+                    grid[i][j].cellEl.classList.remove("flag");
+                    grid[i][j].flag = false;
+                }
+                    
+            })
 
-    
 
             let tdEl = document.createElement("td");
             tdEl.append(cellEl);
 
             trEl.append(tdEl);
+
         }
         boardEl.append(trEl);
     }
@@ -59,7 +72,9 @@ function initialize(numRows, numCols, numMines) {
         for (let j = 0; j < numCols; j++) {
             grid[i][j] = {
                 clear: false,
-                count: 0
+                count: 0,
+                flag:false,
+                look:false,
             };
         }
     }
@@ -135,6 +150,7 @@ function searchClearArea(grid, row, col, numRows, numCols) {
         if (!gridCell.clear) {
             gridCell.clear = true;
             gridCell.cellEl.classList.add("clear");
+            changecolor(grid,cellRow,cellCol);
             if (gridCell.count === 0) {
                 searchClearArea(grid, cellRow, cellCol, numRows, numCols);
             } else if (gridCell.count > 0) {
@@ -186,6 +202,44 @@ function checkAllClear(grid) {
 
     return true;
 }
+//改变数字颜色
+function changecolor(grid,i,j){
+    switch (grid[i][j].count){
+        case 1:
+            grid[i][j].cellEl.classList.add("one");
+            break;
+        case 2:
+            grid[i][j].cellEl.classList.add("two");
+            break;
+        case 3:
+            grid[i][j].cellEl.classList.add("three");
+            break;
+        case 4:
+            grid[i][j].cellEl.classList.add("four");
+            break;
+        case 5:
+            grid[i][j].cellEl.classList.add("five");
+            break;
+        case 6:
+            grid[i][j].cellEl.classList.add("six");
+            break;
+        case 7:
+            grid[i][j].cellEl.classList.add("seven");
+            break;
+        case 8:
+            grid[i][j].cellEl.classList.add("eight");
+            break;
+
+
+    }
+       
+    
+}
+
+//取消右键方式
+document.oncontextmenu = function(e){
+    return false;
+}
 
 //游戏简单，中级，高级模式  
 let count = {
@@ -236,3 +290,4 @@ let restart = document.querySelector("#restart")
 restart.addEventListener("click",()=>{
     location.reload()
 });
+
